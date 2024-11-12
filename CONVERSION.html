@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+</head>
+<body>
+    <h2>Unit Converter</h2>
+
+    <label for="inputValue">ENTER VALUE:</label>
+    <input type="number" id="inputValue">
+
+    <label for="conversionType">CONVERSION TYPE:</label>
+    <select id="conversionType">
+        <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+        <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+        <option value="metersToFeet">Meters to Feet</option>
+        <option value="feetToMeters">Feet to Meters</option>
+    </select>
+
+    <button onclick="convert()">Convert</button>
+
+    <p id="result"></p>  
+
+
+    <script>
+        function convert() {
+            const inputValue = parseFloat(document.getElementById("inputValue").value);
+            const conversionType = document.getElementById("conversionType").value; 
+
+
+            let result;
+
+            switch (conversionType) {
+                case "fahrenheitToCelsius":
+                    result = (inputValue - 32) * 5/9;
+                    break;
+                case "celsiusToFahrenheit":
+                    result = (inputValue * 9/5) + 32;
+                    break;
+                case "metersToFeet":
+                    result = inputValue * 3.281; 
+
+                    break;
+                case "feetToMeters":
+                    result = inputValue / 3.281;
+                    break;
+                default:
+                    result = "Invalid conversion type";
+            }
+
+            document.getElementById("result").textContent = `Result: ${result.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html> 

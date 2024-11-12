@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Income Tax Calculator</title>
+</head>
+<body>
+    <input type="number" id="taxableIncome" placeholder="Enter Taxable Income">
+    <button onclick="calculateTax()">Calculate Tax</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateTax() {
+            const taxableIncome = parseFloat(document.getElementById("taxableIncome").value);
+            let tax = 0;
+
+            if (taxableIncome <= 250000) {
+                tax = 0;
+            } else if (taxableIncome <= 400000)   
+ {
+                tax = (taxableIncome - 250000) * 0.2;
+            } else if (taxableIncome <= 800000) {
+                tax = 30000 + (taxableIncome - 400000) * 0.25;
+            } else if (taxableIncome <= 2000000) {
+                tax = 130000 + (taxableIncome - 800000) * 0.3;
+            } else if (taxableIncome <= 8000000) {
+                tax = 490000 + (taxableIncome - 2000000) * 0.32;
+            } else {
+                tax = 2410000 + (taxableIncome - 8000000) * 0.35;
+            }
+
+            document.getElementById("result").innerHTML = `Income Tax: ${tax.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
