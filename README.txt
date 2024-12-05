@@ -1,30 +1,19 @@
-Phantom by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Juliana B. Ahmad - Personal Portfolio
+Overview
+Welcome to my personal portfolio website! This site is designed to showcase various assignments and projects I have completed during my studies in the CS 1130 - Introduction to Computing course. It serves as a platform for visitors to explore my work, understand my skills, and see the practical applications of the concepts I've learned.
 
+Features
+Home Page: The landing page introduces me and provides an overview of the website's purpose.
+Assignments Showcase: The website features four main assignments, each with a dedicated section that includes:
+Assignment 1: A conversion tool that allows users to convert between Celsius and Fahrenheit, as well as between meters and feet.
+Assignment 2: An Income Tax Calculator that helps users compute their tax obligations based on input values.
+Assignment 3: A program that calculates the factorial of a number, the sum of the first N natural numbers, and their average using different looping constructs.
+Assignment 4: A Simple Payroll System that manages employee payroll calculations.
+Responsive Design: The website is designed to be responsive, ensuring a seamless experience across various devices, including desktops, tablets, and smartphones.
+User -Friendly Navigation: A clear navigation menu allows users to easily access different sections of the website.
 
-This is Phantom, a simple design built around a grid of large, colorful, semi-interactive
-image tiles (of which you can have as many or as few as you like). Makes use of some
-SVG and animation techniques I've been experimenting with on that other project of mine
-you may have heard about (https://carrd.co), and includes a handy generic page for whatever.
-
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
-
-(* = not included)
-
-AJ
-aj@lkn.io | @ajlkn
-
-
-Credits:
-
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+Technologies Used
+HTML: For the structure and layout of the web pages.
+CSS: For styling and visual presentation.
+JavaScript: For dynamic functionality and interactivity.
+jQuery: For simplified DOM manipulation and event handling.
