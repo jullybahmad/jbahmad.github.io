@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Payroll System</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+
+    <header id="header">
+      <div class="inner">
+        <a href="index.html" class="logo">
+          <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">cs 1130 - introduction to computing</span>
+        </a>
+      </div>
+    </header>
+
+    <div id="main">
+      <div class="inner">
+        <header>
+          <h1>Payroll System</h1>
+        </header>
+
+        <section>
+          <label for="employeeName">Name of Employee:</label>
+          <input type="text" id="employeeName">
+
+          <label for="daysWorked">Number of Days Worked:</label>
+          <input type="number" id="daysWorked">
+
+          <label for="dailyRate">Daily Rate:</label>
+          <input type="number" id="dailyRate">
+
+          <label for="deductionAmount">Deduction Amount:</label>
+          <input type="number" id="deductionAmount"> 
+
+          <button onclick="addEmployee()">Add Employee</button>
+          <button onclick="deleteEmployee()">Delete Employee</button>
+
+          <table id="payrollTable">
+            <thead>
+              <tr>
+                <th style="padding: 10px;">No.</th>
+                <th style="padding: 10px;">Employee Name</th>
+                <th style="padding: 10px;">Days Worked</th>
+                <th style="padding: 10px;">Daily Rate</th>
+                <th style="padding: 10px;">Gross Pay</th>
+                <th style="padding: 10px;">Deduction Amount</th>
+                <th style="padding: 10px;">Net Pay</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <!-- Back to Home Button -->
+          <button onclick="window.location.href='index.html'">Back to Home</button>
+        </section>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    let employees = [];
+
+    function addEmployee() {
+      const employeeName = document.getElementById("employeeName").value;
+      const daysWorked = parseInt(document.getElementById("daysWorked").value);
+      const dailyRate = parseFloat(document.getElementById("dailyRate").value);
+      const deductionAmount = parseFloat(document.getElementById("deductionAmount").value);
+
+      // Input validation
+      if (isNaN(daysWorked) || daysWorked <= 0 || isNaN(dailyRate) || dailyRate <= 0 || isNaN(deductionAmount) || deductionAmount < 0) {
+        alert("Please enter valid numerical values for days worked, daily rate, and deduction amount.");
+        return;
+      }
+
+      const grossPay = daysWorked * dailyRate;
+      const netPay = grossPay - deductionAmount;
+
+      employees.push({
+        employeeName,
+        daysWorked,
+        dailyRate,
+        grossPay,
+        deductionAmount,
+        netPay
+      });
+
+      displayEmployees();
+      clearInputFields();
+    }
+
+    function deleteEmployee() {
+      const employeeNameToDelete = prompt("Enter the name of the employee to delete:");
+      const indexToDelete = employees.findIndex(employee => employee.employeeName === employeeNameToDelete);
+
+      if (indexToDelete !== -1) {
+        employees.splice(indexToDelete, 1);
+        displayEmployees();
+      } else {
+        alert("Employee not found.");
+      }
+    }
+
+    function displayEmployees() {
+      const tableBody = document.getElementById("payrollTable").getElementsByTagName("tbody")[0];
+      tableBody.innerHTML = "";
+
+      employees.forEach((employee, index) => {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+        const cell4 = row.insertCell(3);
+        const cell5 = row.insertCell(4);
+        const cell6 = row.insertCell(5);
+        const cell7 = row.insertCell(6);
+
+        cell1.textContent = index + 1;
+        cell2.textContent = employee.employeeName;
+        cell3.textContent = employee.daysWorked;
+        cell4.textContent = employee.dailyRate;
+        cell5.textContent = employee.grossPay;
+        cell6.textContent = employee.deductionAmount;
+        cell7.textContent = employee.netPay;
+      });
+    }
+
+    function clearInputFields() {
+      document.getElementById("employeeName").value = "";
+      document.getElementById("daysWorked").value = "";
+      document.getElementById("dailyRate").value = "";
+      document.getElementById("deductionAmount").value = "";
+    }
+  </script>
+</body>
+</html>
